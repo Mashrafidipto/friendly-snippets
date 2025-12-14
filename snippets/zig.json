@@ -1,25 +1,63 @@
 {
-  "Import": {
-    "prefix": "import",
-    "body": ["const ${1} = @import(\"${1}\");"],
-    "description": "Importing Libraries"
-  },
-  "CImport": {
-    "prefix": "cimport",
-    "body": ["const c = @cImport({", "    @cDefine(\"${1}\");", "});"],
-    "description": "Importing C Header Files"
-  },
-  "buildExe": {
-    "prefix": "bExe",
-    "body": [
-      "const exe = b.addExecutable(.{",
-      "    .name = \"${1}\",",
-      "    .root_source_file = b.path(\"${2:path}\"),",
-      "    .target = target,",
-      "    .optimize = optimize,",
-      "});",
-      "b.installArtifact(exe);"
-    ],
-    "description": "Building an exe"
-  }     
+    "Import": {
+        "prefix": "import",
+        "body": [
+            "const ${1} = @import(\"${1}\");"
+        ],
+        "description": "Importing Libraries"
+    },
+    "CImport": {
+        "prefix": "cimport",
+        "body": [
+            "const c = @cImport({",
+            "    @cDefine(\"${1}\");",
+            "});"
+        ],
+        "description": "Importing C Header Files"
+    },
+    "buildExe": {
+        "prefix": "bExe",
+        "body": [
+            "const exe = b.addExecutable(.{",
+            "    .name = \"${1}\",",
+            "    .root_source_file = b.path(\"${2:path}\"),",
+            "    .target = target,",
+            "    .optimize = optimize,",
+            "});",
+            "b.installArtifact(exe);"
+        ],
+        "description": "Building an exe"
+    },
+    "Stdout": {
+        "prefix": "stdout",
+        "body": [
+            "var stdout_buffer = [_]u8{0} ** ${1:buffer_len};",
+            "var stdout_writer = std.fs.File.stdout().writer(&stdout_buffer);",
+            "var stdout = &stdout_writer.interface;"
+        ],
+        "description": "geting an stdout writer"
+    },
+    "Stdin": {
+        "prefix": "stdin",
+        "body": [
+            "var stdin_buffer = [_]u8{0} ** ${1:buffer_len};",
+            "var stdin_reader = std.fs.File.stdin().stdin(&stdin_buffer);",
+            "var stdin = &stdin_reader.interface;"
+        ],
+        "description": "geting an stdin reader"
+    },
+    "stdprint": {
+        "prefix": "stdprint",
+        "body": [
+            "try stdout.print(\"${1}\",.{${2}});"
+        ],
+        "description": "stdout print"
+    },
+    "flush": {
+        "prefix": "flush",
+        "body": [
+            "try stdout.flush();"
+        ],
+        "description": "stdout flush"
+    }
 }
