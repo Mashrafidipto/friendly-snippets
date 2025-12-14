@@ -41,7 +41,7 @@
         "prefix": "stdin",
         "body": [
             "var stdin_buffer = [_]u8{0} ** ${1:buffer_len};",
-            "var stdin_reader = std.fs.File.stdin().stdin(&stdin_buffer);",
+            "var stdin_reader = std.fs.File.stdin().reader(&stdin_buffer);",
             "var stdin = &stdin_reader.interface;"
         ],
         "description": "geting an stdin reader"
