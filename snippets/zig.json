@@ -49,7 +49,7 @@
     "stdprint": {
         "prefix": "stdprint",
         "body": [
-            "try stdout.print(\"${1}\",.{${2}});"
+            "try stdout.print(\"${1}\\n\",.{${2}});"
         ],
         "description": "stdout print"
     },
