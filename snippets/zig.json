@@ -58,7 +58,7 @@
     "flush": {
         "prefix": "flush",
         "body": [
-            "try stdout.flush();"
+            "try ${1}.flush();${2}"
         ],
         "description": "stdout flush"
     }
