@@ -32,9 +32,9 @@
         "prefix": "stdout",
         "body": [
             "var stdout_buffer = [_]u8{0} ** ${1:buffer_len};",
-            "var stdout_writer = std.fs.File.stdout().writer(&stdout_buffer);",
+            "var stdout_writer = std.Io.File.stdout().writer( ${2:Io}, &stdout_buffer);",
             "var stdout = &stdout_writer.interface;",
-            "${2}"
+            "${3}"
         ],
         "description": "geting an stdout writer"
     },
@@ -42,9 +42,9 @@
         "prefix": "stdin",
         "body": [
             "var stdin_buffer = [_]u8{0} ** ${1:buffer_len};",
-            "var stdin_reader = std.fs.File.stdin().reader(&stdin_buffer);",
+            "var stdin_reader = std.Io.File.stdin().reader( ${2:Io},&stdin_buffer);",
             "var stdin = &stdin_reader.interface;",
-            "${2}"
+            "${3}"
         ],
         "description": "geting an stdin reader"
     },
@@ -58,7 +58,7 @@
     "flush": {
         "prefix": "flush",
         "body": [
-            "try ${1}.flush();${2}"
+            "try ${1}.flush();"
         ],
         "description": "stdout flush"
     }
