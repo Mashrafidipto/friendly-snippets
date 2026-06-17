@@ -34,7 +34,6 @@
             "var stdout_buffer = [_]u8{0} ** ${1:buffer_len};",
             "var stdout_writer = std.Io.File.stdout().writer( ${2:Io}, &stdout_buffer);",
             "var stdout = &stdout_writer.interface;",
-            "${3}"
         ],
         "description": "geting an stdout writer"
     },
@@ -44,7 +43,6 @@
             "var stdin_buffer = [_]u8{0} ** ${1:buffer_len};",
             "var stdin_reader = std.Io.File.stdin().reader( ${2:Io},&stdin_buffer);",
             "var stdin = &stdin_reader.interface;",
-            "${3}"
         ],
         "description": "geting an stdin reader"
     },
